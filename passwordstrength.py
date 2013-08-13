@@ -50,7 +50,7 @@ class passwordstrength:
         for char in self.password:
             if char in string.punctuation:
                 score += 1
-        return score * 3
+        return score * 6 #The way WA works.
     
     def __letters_only_score(self):
         for char in self.password:
