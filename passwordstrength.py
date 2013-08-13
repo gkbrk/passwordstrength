@@ -19,8 +19,7 @@ class passwordstrength:
         self.score += self.__dictionary_words_score()
     
     def __lenght_score(self):
-        #This will return the length of the password as a score to add.
-        return len(self.password)
+        return len(self.password) * 4 #The way WA works.
     
     def __lower_upper_case_score(self):
         #This will return the number of upper and lower case characters if at least one of each is available.
