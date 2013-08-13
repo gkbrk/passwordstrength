@@ -56,13 +56,13 @@ class passwordstrength:
         for char in self.password:
             if not str(char).lower() in string.lowercase:
                 return 0 #If it contains something else than letters, don't affect the score.
-        return -5 #If it only contains letters, decrease the score by 5.
+        return -len(self.password) #Return the negative form of the password length. The way WA works.
     
     def __numbers_only_score(self):
         for char in self.password:
             if not char in string.digits:
                 return 0 #If it contains something else than numbers, don't affect the score.
-        return -5 #If it only contains numbers, decrease the score by 5.
+        return -len(self.password) #Return the negative form of the password length. The way WA works.
     
     def __repeating_chars_score(self):
         repeating_char_count = 0
