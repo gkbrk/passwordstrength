@@ -43,7 +43,7 @@ class passwordstrength:
         for char in self.password:
             if char in string.digits:
                 score += 1
-        return score
+        return score * 4 #The way WA works.
     
     def __special_score(self):
         score = 0
