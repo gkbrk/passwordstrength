@@ -7,6 +7,8 @@ import string
 class passwordstrength:
     def __init__(self, password):
         self.password = password
+        self.password_length = len(password)
+        
         #Calculating the score
         self.score = 0
         self.score += self.__lenght_score()
@@ -18,51 +20,47 @@ class passwordstrength:
         self.score += self.__sequential_numbers_score()
         self.score += self.__dictionary_words_score()
     
+    def __chars_of_type(self, chartype):
+        chartype_count = 0
+        for char in self.password:
+            if char in chartype:
+                chartype_count += 1
+        return chartype_count
+    
     def __lenght_score(self):
         return len(self.password) * 4 #The way WA works.
     
     def __lower_upper_case_score(self):
         #This will return the number of upper and lower case characters if at least one of each is available.
-        lower_score = 0
-        for char in self.password:
-            if char in string.lowercase:
-                lower_score += 1
-        
-        upper_score = 0
-        for char in self.password:
-            if char in string.uppercase:
-                upper_score += 1
-        
+        lower_score = self.__chars_of_type(string.lowercase)        
+        upper_score = self.__chars_of_type(string.uppercase)
+                
         if lower_score and upper_score:
             return lower_score + upper_score
         else:
             return 0
     
     def __digits_score(self):
-        score = 0
-        for char in self.password:
-            if char in string.digits:
-                score += 1
-        return score * 4 #The way WA works.
+        digit_count = self.__chars_of_type(string.digits)
+        return digit_count * 4 #The way WA works.
     
     def __special_score(self):
-        score = 0
-        for char in self.password:
-            if char in string.punctuation:
-                score += 1
-        return score * 6 #The way WA works.
+        special_char_count = self.__chars_of_type(string.punctuation)
+        return special_char_count * 6 #The way WA works.
     
     def __letters_only_score(self):
-        for char in self.password:
-            if not str(char).lower() in string.lowercase:
-                return 0 #If it contains something else than letters, don't affect the score.
-        return -len(self.password) #Return the negative form of the password length. The way WA works.
+        letter_count = self.__chars_of_type(string.lowercase + string.uppercase)
+        if self.password_length == letter_count:
+            return -self.password_length #If the password is all letters, return the negative form of the password length. The way WA works.
+        else:
+            return 0 #If the password contains something else than letters, don't affect the score.
     
     def __numbers_only_score(self):
-        for char in self.password:
-            if not char in string.digits:
-                return 0 #If it contains something else than numbers, don't affect the score.
-        return -len(self.password) #Return the negative form of the password length. The way WA works.
+        digit_count = self.__chars_of_type(string.digits)
+        if self.password_length == digit_count:
+            return -self.password_length #If the password is all numbers, return the negative form of the password length. The way WA works.
+        else:
+            return 0 #If the password contains something else than numbers, don't affect the score.
     
     def __repeating_chars_score(self):
         repeating_char_count = 0
@@ -80,13 +78,7 @@ class passwordstrength:
         return -sequential_number_count * 3
     
     def __dictionary_words_score(self):
-        dict_words = []
-        dict_words.append("hello")
-        dict_words.append("world")
-        dict_words.append("how")
-        dict_words.append("are")
-        dict_words.append("you")
-        dict_words.append("doing")
+        dict_words = "Hello world how are you doing".split()
         
         for word in dict_words:
             if word in self.password:
