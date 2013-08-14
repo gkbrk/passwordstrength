@@ -28,7 +28,7 @@ class passwordstrength:
         return chartype_count
     
     def __lenght_score(self):
-        return len(self.password) * 4 #The way WA works.
+        return self.password_length * 4 #The way WA works.
     
     def __lower_upper_case_score(self):
         #This will return the number of upper and lower case characters if at least one of each is available.
