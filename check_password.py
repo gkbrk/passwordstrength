@@ -9,7 +9,7 @@ def random_pass():
     """Random password generator function."""
     charset = string.lowercase + string.uppercase + string.digits + ".-_"
     password = ""
-    for i in range(random.randint(5,10)):
+    for i in range(random.randint(5,13)):
         password += str(random.choice(charset))
     return password
 
