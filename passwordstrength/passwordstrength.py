@@ -13,7 +13,7 @@ class passwordstrength:
         
         #Calculating the score
         self.score = 0
-        self.score += self.__lenght_score()
+        self.score += self.__length_score()
         self.score += self.__lower_upper_case_score()
         self.score += self.__digits_score()
         self.score += self.__special_score()
@@ -29,7 +29,7 @@ class passwordstrength:
                 chartype_count += 1
         return chartype_count
     
-    def __lenght_score(self):
+    def __length_score(self):
         return self.password_length * 4 #The way WA works.
     
     def __lower_upper_case_score(self):
