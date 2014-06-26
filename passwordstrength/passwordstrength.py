@@ -80,6 +80,7 @@ class passwordstrength:
         return -sequential_number_count * 3
     
     def __dictionary_words_score(self):
+        # you could perhaps use the diceware list for this
         dict_words = "Hello world how are you doing".split()
         
         for word in dict_words:
@@ -91,13 +92,14 @@ class passwordstrength:
         return self.score
     
     def get_readable_score(self):
+        # this was broken; fixed. :)
         if self.score < 0:
             return "Very weak"
-        elif self.score >= 0:
+        elif self.score in range(0, 30):
             return "Weak"
-        elif self.score >= 30:
+        elif self.score in range(30, 60):
             return "OK"
-        elif self.score >= 60:
+        elif self.score in range(60, 80):
             return "Strong"
         elif self.score >= 80:
             return "Very strong"
@@ -110,6 +112,7 @@ def main():
     
     strength = passwordstrength(getpass.getpass("Password: "))
     if args.readable:
+        print "Score:", strength.get_score()
         print strength.get_readable_score()
     else:
         print "Score:", strength.get_score()
