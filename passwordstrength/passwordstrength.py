@@ -227,7 +227,7 @@ def main():
     ap.add_argument('-r', '--readable', action='store_true',
                     help="Outputs the english score.")
     ap.add_argument('-v', '--verbose', action='store_true',
-                    help='Outputs a scoring table')
+                    help='Outputs a scoring table.')
     args = ap.parse_args()
     
     strength = passwordstrength(getpass.getpass("Password: "), verbose=args.verbose)

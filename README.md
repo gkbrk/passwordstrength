@@ -42,7 +42,7 @@ optional arguments:
 
       -h, --help      show this help message and exit
       -r, --readable  Outputs the english score.
-      -v, --verbose   Outputs a scoring table
+      -v, --verbose   Outputs a scoring table.
 
 
 ##Score Calculation Rules##
