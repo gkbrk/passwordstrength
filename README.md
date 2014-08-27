@@ -8,17 +8,42 @@ It checks a passwords strength using several rules based on the ones found at [W
 
 To provide a reliable module for calculating the strength score of a password.
 
+##Installation##
+
+1. Download and extract this repo
+2. Open a Terminal or Command Prompt in this new folder.
+3. Enter:
+
+Linux:
+
+    sudo python setup.py install
+
+Windows:
+
+    python setup.py install
+
 ##Usage##
 
+In a Python Script:
+
     import passwordstrength
-    print passwordstrength.passwordstrength("hello-world").get_score()
+    
+    strength = passwordstrength.passwordstrength("hello-world")
+    score = strength.get_score()
+    readable_score = strength.get_readable_score()
 
-##Methods##
+***
 
-The passwordstrength class has two methods.
+In the Terminal or Command Prompt:
 
-1. get_score() - Returns the score of the password.
-2. get_readable_score() - Returns one of the strings "Very weak", "Weak", "OK", "Strong" and "Very strong"
+    passwordstrength [-h] [-r] [-v]
+
+optional arguments:
+
+      -h, --help      show this help message and exit
+      -r, --readable  Outputs the english score.
+      -v, --verbose   Outputs a scoring table
+
 
 ##Score Calculation Rules##
 
@@ -27,18 +52,18 @@ The passwordstrength class has two methods.
 3. Lower-case letters - **Done!**
 3. Numbers - **Done!**
 4. Special Characters - **Done!**
-5. Middle numbers or special characters
+5. Middle numbers or special characters - **Done!**
 6. Not letters only - **Done!**
 7. Not numbers only - **Done!**
 8. No repeating characters - **Done!**
-9. No consecutive upper-case letters
-10. No consecutive lower-case letters
-11. No consecutive numbers
-12. No sequential letters
+9. No consecutive upper-case letters - **Done!**
+10. No consecutive lower-case letters - **Done!**
+11. No consecutive numbers - **Done!**
+12. No sequential letters - **Done!**
 13. No sequential numbers - **Done!**
-14. No dictionary words - **Logic done**, need to add a common password list for good results.
+14. No dictionary words - **Done!**
 
 ##To do's##
 
-1. Implement more functions
-2. Configure
+1. Accept a list of passwords
+2. Output a list of passwords + their score
