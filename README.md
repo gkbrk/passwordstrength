@@ -10,6 +10,14 @@ To provide a reliable module for calculating the strength score of a password.
 
 ##Installation##
 
+###Using `pip`###
+
+To get the latest source via pip, use
+
+`pip install -e git+https://github.com/gkbrk/passwordstrength.git#egg=passwordstrength`
+
+###From Source###
+
 1. Download and extract this repo
 2. Open a Terminal or Command Prompt in this new folder.
 3. Enter:
