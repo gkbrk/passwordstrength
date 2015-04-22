@@ -262,7 +262,10 @@ class passwordstrength:
 
         if upper and lower and (special or number):
             self.__table_print('extra criteria', 'yes', 8)
+            
             return 8
+
+        return 0
     
     def get_score(self):
         return self.score
