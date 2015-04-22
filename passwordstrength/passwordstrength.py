@@ -2,14 +2,14 @@
 paswordstrength module can be used to get a password strength score of a string. It is based on various rules which are similar to those found in Wolfram Alpha.
 """
 
-#only load it once.
-with open(r'..\english', 'r') as f:
-    words = set(f.read().split('\n'))
-
-
+import os
 from argparse import ArgumentParser
 import getpass
 import string
+
+#only load it once.
+with open(os.path.join(os.pardir, "english"), 'r') as f:
+    words = set(f.read().split('\n'))
 
 class passwordstrength:
     def __init__(self, password, verbose=False):
@@ -20,7 +20,7 @@ class passwordstrength:
         
         self.verbose = verbose
         if verbose:
-            print("{:>45s}{:>13s}".format("count", "value"))
+            print("{:>45s}{:>13s}".format("Count", "Value"))
             print('='*80)
         
         #Calculating the score
@@ -39,9 +39,14 @@ class passwordstrength:
             self.__dictionary_words_score(),
             self.__extra_score()
             ))
+
+        if verbose:
+            print('-'*80)
+            print("{:>45s}{}{:=+4d}".format("Total", ' '*8, self.score))
     
     def __table_print(self, title, count, value):
         if self.verbose:
+            title = title.capitalize()
             count = str(count)
             
             print "{title:40s}{count:13s}{value:=+4d}".format(**locals())
