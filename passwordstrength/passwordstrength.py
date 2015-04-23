@@ -78,8 +78,8 @@ class passwordstrength:
         
         if lower_score and upper_score:
             return lower_score + upper_score
-        else:
-            return 0
+
+        return 0
     
     def __digits_score(self):
         digit_count = self.__chars_of_type(string.digits)
@@ -160,9 +160,10 @@ class passwordstrength:
             string.digits   : 0,
             }
 
-        for char_type in char_types:
-            for c1, c2 in zip(self.password, self.password[1:]):
-                #zips match the length of the shorter by default
+        for c1, c2 in zip(self.password, self.password[1:]):
+            #zips match the length of the shorter by default
+            
+            for char_type in char_types:
                 if c1 in char_type and c2 in char_type:
                     char_types[char_type] += 1
 
@@ -200,7 +201,7 @@ class passwordstrength:
         seeing = False
         for c1, c2 in zip(password, password[1:]):
             #zips match the length of the shorter by default
-            if ord(c1)+1 == ord(c2):
+            if ord(c1)+1 == ord(c2) and c1 in string.ascii_lowercase[:-1]:
                 sequential_letter_count += 1
 
                 if not seeing:
